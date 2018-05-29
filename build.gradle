@@ -12,7 +12,7 @@ plugins {
 }
 
 apply plugin:'application'
-mainClassName = "edu.handong.csee.java.hw3.MessageCounterDriver"
+mainClassName = "edu.handong.csee.java.chatcounter.MessageCounterDriver"
 
 
 dependencies {

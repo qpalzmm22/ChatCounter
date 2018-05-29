@@ -45,6 +45,16 @@ public class MessageCounterDriver {
 			}
 			Collections.sort(ncList);
 			
+			
+			// uncomment it if you want to see it work in eclipse
+			
+			/*
+			System.out.println("kakao_id, count");
+			for(NMcount e: ncList) {
+				System.out.println(e.getName() + ", " +e.getCount());
+			}
+			*/
+			
 			FileExporter fileExporter = new FileExporter(outputPath);
 			fileExporter.makeItCSVFile(ncList);
 			System.out.println("Exporting Complete...");
@@ -98,8 +108,8 @@ public class MessageCounterDriver {
 	private void printHelp(Options options) {
 		// automatically generate the help statement
 		HelpFormatter formatter = new HelpFormatter();
-		String header = "CLI for Message Counter program";
-		String footer = "End of the help";
-		formatter.printHelp("CLIExample", header, options, footer, true);
+		String header = "CLI for Message Counter program\n\n";
+		String footer = "End of the help\n";
+		formatter.printHelp("ChatCounter", header, options, footer, true);
 	}
 }
