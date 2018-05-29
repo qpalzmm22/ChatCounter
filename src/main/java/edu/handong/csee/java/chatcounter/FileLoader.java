@@ -1,17 +1,11 @@
 package edu.handong.csee.java.chatcounter;
 
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVRecord;
-
 import java.io.*;
 
  /**
-  * This class gets path as a parameter and provides tools to sort them by mac file 
-  * and windows file. 
+  * This class load .csv and .txt files to parse each by according parser 
+  * This class gets its input directory by constructor
   * @author qpalzmm22
   *
   */
@@ -19,14 +13,25 @@ public class FileLoader {
 	private File directory = null;
 	private HashMap<String, ArrayList<NDMdata>> messages = new HashMap<String, ArrayList<NDMdata>>();
 	
-	
+	/**
+	 * This class gets its input directory by constructor
+	 * @param path
+	 */
 	public FileLoader(String path) {
 		directory = new File(path);
 	}
 
+	/**
+	 * This method is the getter of messages.
+	 * @return
+	 */
 	public HashMap<String, ArrayList<NDMdata>> getMessages() {
 		return messages;
 	}
+	
+	/**
+	 * This method loads all the csv in the given directory and parse it using csvParser
+	 */
 	
 	public void loadMacFiles() {
 		MacFileParser parser = new MacFileParser();
@@ -38,6 +43,10 @@ public class FileLoader {
 			}
 		} 
 	}
+	
+	/**
+	 * This method loads all the txt files in the given directory and parse it using lineParser
+	 */
 	public void loadWindowsFiles() {
 		WindowsFileParser parser = new WindowsFileParser();
 		

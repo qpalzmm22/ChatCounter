@@ -9,16 +9,28 @@ import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 
+/**
+ * This class is the driver for main method
+ * This class implements CLI using commons-cli
+ * The CLI contains 3 options of inputPath, outputPath and help
+ * @author qpalz
+ *
+ */
 public class MessageCounterDriver {
 	
-	String inputPath;
-	String outputPath;
-	boolean help;
+	private String inputPath;
+	private String outputPath;
+	private boolean help;
 	
+	/**
+	 * Main method to call the run method with arguments, args 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		MessageCounterDriver main = new MessageCounterDriver();
 		main.run(args);
 	}
+	
 
 	private void run(String[]  args) {
 		Options options = createOptions();
@@ -51,7 +63,7 @@ public class MessageCounterDriver {
 			/*
 			System.out.println("kakao_id, count");
 			for(NMcount e: ncList) {
-				System.out.println(e.getName() + ", " +e.getCount());
+				e.print();
 			}
 			*/
 			

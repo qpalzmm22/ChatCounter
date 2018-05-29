@@ -11,9 +11,26 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+/**
+ * This class uses regullar expressions to parse information
+ * Thie class first gets name, messages and the whole date part
+ * The date part must be dealt with carefulness
+ * All the messy date time was dealt in this class
+ * This class could improve by dealing with other exceptions like pictures, specific date, emoticons, etc. 
+ * @author qpalz
+ *
+ */
 public class WindowsFileParser extends FileParser{
 	
+	/**
+	 * This method reads a line from a txt file and find a pattern using regullar expression
+	 * Then, saves name, date and messageString accordingly
+	 * Then using dateParser, correct the time to compare with other NDMdata
+	 * When finally a date was reformed, check if the hashMap contains the newly made NDMdata, and if not add the data 
+	 * @param messages the original hashMap data
+	 * @param file file to be read
+	 * @return
+	 */
 	public HashMap<String, ArrayList<NDMdata>> lineParser(HashMap<String, ArrayList<NDMdata>> messages, File file) {
 		BufferedReader br;	
 		try {
