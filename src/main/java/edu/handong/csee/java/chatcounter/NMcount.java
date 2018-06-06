@@ -57,7 +57,7 @@ public class NMcount implements Comparable<NMcount>{
 	 * this method prints the name and count by csv form
 	 */
 	public void print() {
-		System.out.println(name + ", " + count);
+		System.out.println(name + "," + count);
 	}
 
 	/**
