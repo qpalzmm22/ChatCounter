@@ -12,15 +12,24 @@ public class FileParser {
 	
 	/**
 	 * This method was implemented to add ONLY non-existing NDMdata in the hashMap to avoid duplication.
-	 * The NDMdata of Mac files should be read first in order to avoid bugs(IMPORTANT) 
+	 * 2018-6-6(Isaac) : implemented so that the order doenst matter now(MAC OR Windows can come first)
 	 * 
 	 * @param hashMap The collection of NDM data hashed by the name of the user
 	 * @param data the NDMdata to be tested 
 	 * @return if the data is duplicated the original hashMap is returned, if not newly added one is returned.
 	 */
 	protected HashMap<String, ArrayList<NDMdata>> addUnique(HashMap<String, ArrayList<NDMdata>> hashMap, NDMdata data){
+		
 		for(NDMdata e: hashMap.get(data.getName())) {
-			if(e.equalsTo(data))
+			NDMdata longerNDM = e;
+			NDMdata shorterNDM = data;
+			
+			if(e.getMessage().length() < data.getMessage().length()) {
+				longerNDM = data;
+				shorterNDM = e;
+			}
+				
+			if(longerNDM.equalsTo(shorterNDM))
 				return hashMap;			
 		}
 		hashMap.get(data.getName()).add(data);

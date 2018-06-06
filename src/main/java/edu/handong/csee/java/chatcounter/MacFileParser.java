@@ -18,7 +18,6 @@ import org.apache.commons.csv.CSVRecord;
 public class MacFileParser extends FileParser{
 	/**
 	 * This method parses name, time(hour and minutes) and messages and saves it as a NDMdata
-	 * This method must used before WindowsParser for correct behavior
 	 * @param messages the collection of unique NDMdata.
 	 * @param file The file to be read and parsed
 	 * @return the new collection of unique NDMdata after parsing and adding unique messages to the collection

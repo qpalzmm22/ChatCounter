@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 /**
- * This class uses regullar expressions to parse information
+ * This class uses regular expressions to parse information
  * Thie class first gets name, messages and the whole date part
  * The date part must be dealt with carefulness
  * All the messy date time was dealt in this class
