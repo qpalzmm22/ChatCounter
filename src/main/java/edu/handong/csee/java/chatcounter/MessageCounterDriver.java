@@ -42,9 +42,9 @@ public class MessageCounterDriver {
 			}
 			FileLoader fileLoader = new FileLoader(inputPath);
 			
-			//MUST BE IN THIS ORDER(load mac first, then windows)
 			fileLoader.loadMacFiles();
 			fileLoader.loadWindowsFiles();
+			
 			System.out.println("Loading Complete...");
 			
 			
@@ -71,6 +71,7 @@ public class MessageCounterDriver {
 			fileExporter.makeItCSVFile(ncList);
 			System.out.println("Exporting Complete...");
 		}
+		System.out.println("----All Tasks Are Complete----");
 	}
 
 	private boolean parseOptions(Options options, String[] args) {
