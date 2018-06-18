@@ -19,7 +19,7 @@ public class MacFileParser extends FileParser{
 	 * This method parses name, time(hour and minutes) and messages and saves it as a NDMdata
 	 * @param messages the collection of unique NDMdata.
 	 * @param file The file to be read and parsed
-	 * @return the new collection of unique NDMdata after parsing and adding unique messages to the collection
+	 * @return the new collection of NDMdata after parsing and adding unique messages to the collection
 	 */
 	public ArrayList<NDMdata>csvParser(ArrayList<NDMdata> messages, File file) {
 		Reader in;

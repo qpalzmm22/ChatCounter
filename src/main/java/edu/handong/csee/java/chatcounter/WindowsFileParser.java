@@ -26,7 +26,7 @@ public class WindowsFileParser extends FileParser{
 	 * Then, saves name, date and messageString accordingly
 	 * Then using dateParser, correct the time to compare with other NDMdata
 	 * When finally a date was reformed, check if the hashMap contains the newly made NDMdata, and if not add the data 
-	 * @param messages the original hashMap data
+	 * @param messages the list of NDMdata
 	 * @param file file to be read
 	 * @return
 	 */
@@ -73,9 +73,9 @@ public class WindowsFileParser extends FileParser{
 			if(m2.group(1) != null) {
 				time = m2.group(2);
 				hour = Integer.parseInt(time.substring(0, time.length() - 3));
-				if(m2.group(1).equals("¿ÀÈÄ") && hour != 12)
+				if(m2.group(1).equals("ï¿½ï¿½ï¿½ï¿½") && hour != 12)
 					hour += 12;
-				else if(m2.group(1).equals("¿ÀÀü") && hour == 12)
+				else if(m2.group(1).equals("ï¿½ï¿½ï¿½ï¿½") && hour == 12)
 					hour = 0;
 			}
 			
