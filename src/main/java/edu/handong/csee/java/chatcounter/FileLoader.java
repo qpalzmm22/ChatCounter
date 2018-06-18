@@ -10,22 +10,13 @@ import java.io.*;
   *
   */
 public class FileLoader {
-	private File directory = null;
-	private HashMap<String, ArrayList<NDMdata>> messages = new HashMap<String, ArrayList<NDMdata>>();
-	
-	/**
-	 * This class gets its input directory by constructor
-	 * @param path
-	 */
-	public FileLoader(String path) {
-		directory = new File(path);
-	}
+	private ArrayList<NDMdata> messages = new ArrayList<NDMdata>();
 
 	/**
 	 * This method is the getter of messages.
 	 * @return
 	 */
-	public HashMap<String, ArrayList<NDMdata>> getMessages() {
+	public ArrayList<NDMdata> getMessages() {
 		return messages;
 	}
 	
@@ -33,29 +24,21 @@ public class FileLoader {
 	 * This method loads all the csv in the given directory and parse it using csvParser
 	 */
 	
-	public void loadMacFiles() {
+	public ArrayList<NDMdata> loadMacFile(File file) {
 		MacFileParser parser = new MacFileParser();
-		
-		for(File file: directory.listFiles()) {
-			if(file.getName().contains(".csv")) {
-				System.out.println("Reading csv files," + file.getName()+ "...");
-				messages = parser.csvParser(messages, file);
-			}
-		} 
+		System.out.println("Reading csv files," + file.getName()+ "...");
+		messages = parser.csvParser(messages, file);
+		return messages;
 	}
 	
 	/**
 	 * This method loads all the txt files in the given directory and parse it using lineParser
 	 */
-	public void loadWindowsFiles() {
+	public ArrayList<NDMdata> loadWindowsFile(File file) {
 		WindowsFileParser parser = new WindowsFileParser();
-		
-		for(File file: directory.listFiles()) {
-			if(file.getName().contains(".txt")) {
-				System.out.println("Reading txt files," + file.getName()+ "...");
-				messages = parser.lineParser(messages, file);
-			}
-		}
+		System.out.println("Reading txt files," + file.getName()+ "...");
+		messages = parser.lineParser(messages, file);
+		return messages; 
 	}
 
 }

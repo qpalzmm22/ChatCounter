@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.Reader;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
@@ -22,7 +21,7 @@ public class MacFileParser extends FileParser{
 	 * @param file The file to be read and parsed
 	 * @return the new collection of unique NDMdata after parsing and adding unique messages to the collection
 	 */
-	public HashMap<String, ArrayList<NDMdata>> csvParser(HashMap<String, ArrayList<NDMdata>> messages, File file) {
+	public ArrayList<NDMdata>csvParser(ArrayList<NDMdata> messages, File file) {
 		Reader in;
 		try {
 			in = new FileReader(file);
@@ -32,10 +31,9 @@ public class MacFileParser extends FileParser{
 				String user = record.get(1);
 				String messageString = record.get(2);
 				
-				if(!messages.containsKey(user))
-					messages.put(user, new ArrayList<NDMdata>());
-				
-				 messages = addUnique(messages, new NDMdata(user, time, messageString));
+				 //messages = addUnique(messages, new NDMdata(user, time, messageString));
+				 NDMdata data = new NDMdata(user, time, messageString);
+				 messages.add(data);
 			}
 		}
 		catch(Exception e) {

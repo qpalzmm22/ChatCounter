@@ -18,7 +18,11 @@ public class FileParser {
 	 * @param data the NDMdata to be tested 
 	 * @return if the data is duplicated the original hashMap is returned, if not newly added one is returned.
 	 */
-	protected HashMap<String, ArrayList<NDMdata>> addUnique(HashMap<String, ArrayList<NDMdata>> hashMap, NDMdata data){
+	public HashMap<String, ArrayList<NDMdata>> addUnique(HashMap<String, ArrayList<NDMdata>> hashMap, NDMdata data){
+		
+		String name = data.getName();
+		if(!hashMap.containsKey(name))
+			hashMap.put(name, new ArrayList<NDMdata>());
 		
 		for(NDMdata e: hashMap.get(data.getName())) {
 			NDMdata longerNDM = e;
@@ -35,5 +39,4 @@ public class FileParser {
 		hashMap.get(data.getName()).add(data);
 		return hashMap; 
 	}
-
 }

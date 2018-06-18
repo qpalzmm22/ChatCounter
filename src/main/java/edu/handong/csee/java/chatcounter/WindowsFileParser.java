@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 /**
@@ -31,7 +30,7 @@ public class WindowsFileParser extends FileParser{
 	 * @param file file to be read
 	 * @return
 	 */
-	public HashMap<String, ArrayList<NDMdata>> lineParser(HashMap<String, ArrayList<NDMdata>> messages, File file) {
+	public ArrayList<NDMdata> lineParser(ArrayList<NDMdata> messages, File file) {
 		BufferedReader br;	
 		try {
 			br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"));
@@ -50,10 +49,10 @@ public class WindowsFileParser extends FileParser{
 					messageString = m.group(3);
 					date = dateParser(date);
 				}
-				if(!messages.containsKey(user))
-					messages.put(user, new ArrayList<NDMdata>());
 				
-				messages = addUnique(messages, new NDMdata(user, date, messageString));
+				//messages = addUnique(messages, new NDMdata(user, date, messageString));
+				NDMdata data = new NDMdata(user, date, messageString);
+				messages.add(data);
 			}
 		} catch (UnsupportedEncodingException | FileNotFoundException e) {
 			e.printStackTrace();
@@ -74,9 +73,9 @@ public class WindowsFileParser extends FileParser{
 			if(m2.group(1) != null) {
 				time = m2.group(2);
 				hour = Integer.parseInt(time.substring(0, time.length() - 3));
-				if(m2.group(1).equals("ì˜¤í›„") && hour != 12)
+				if(m2.group(1).equals("¿ÀÈÄ") && hour != 12)
 					hour += 12;
-				else if(m2.group(1).equals("ì˜¤ì „") && hour == 12)
+				else if(m2.group(1).equals("¿ÀÀü") && hour == 12)
 					hour = 0;
 			}
 			
