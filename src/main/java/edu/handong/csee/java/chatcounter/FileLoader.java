@@ -1,6 +1,9 @@
 package edu.handong.csee.java.chatcounter;
 
 import java.util.*;
+
+import com.google.common.io.Files;
+
 import java.io.*;
 
  /**
@@ -21,23 +24,25 @@ public class FileLoader {
 	}
 	
 	/**
-	 * This method loads all the csv in the given directory and parse it using csvParser
+	 * This method loads a csv file in the given directory and parse it using csvParser
 	 */
 	
 	public ArrayList<NDMdata> loadMacFile(File file) {
 		MacFileParser parser = new MacFileParser();
-		System.out.println("Reading csv files," + file.getName()+ "...");
+		System.out.println("Reading csv file," + file.getName() + "...");
 		messages = parser.csvParser(messages, file);
+		System.out.println("Reading csv file" + file.getName() + "finished");
 		return messages;
 	}
 	
 	/**
-	 * This method loads all the txt files in the given directory and parse it using lineParser
+	 * This method loads a text file in the given directory and parse it using lineParser
 	 */
 	public ArrayList<NDMdata> loadWindowsFile(File file) {
 		WindowsFileParser parser = new WindowsFileParser();
 		System.out.println("Reading txt files," + file.getName()+ "...");
 		messages = parser.lineParser(messages, file);
+		System.out.println("Reading csv file" + file.getName() + "finished");
 		return messages; 
 	}
 

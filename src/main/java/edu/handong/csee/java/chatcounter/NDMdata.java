@@ -66,7 +66,7 @@ public class NDMdata {
 	}
 	
 	/**
-	 * This method checks if two NDMdata is "eqaul"
+	 * This method checks if two NDMdata is "equal"
 	 * the NDMdata is considered equal if
 	 * 1. they have same date(hour, minutes)
 	 * 2. they have same name(owner of the message)
